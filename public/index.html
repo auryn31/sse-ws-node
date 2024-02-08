@@ -1,0 +1,25 @@
+<head>
+  <script
+    src="https://unpkg.com/htmx.org@1.9.10"
+    integrity="sha384-D1Kt99CQMDuVetoL1lrYwg5t+9QdHe7NLX/SoJYkXDFfX37iInKRy5xLSi8nO7UC"
+    crossorigin="anonymous"
+  ></script>
+  <script src="https://unpkg.com/htmx.org/dist/ext/ws.js"></script>
+  <script src="https://unpkg.com/htmx.org/dist/ext/sse.js"></script>
+</head>
+<body>
+  <div hx-ext="ws" ws-connect="ws://localhost:8080/chatroom">
+    <h2>WS: Chat Room</h2>
+    <div id="chat_room">...</div>
+    <form id="form" ws-send>
+      <input name="chat_message" />
+    </form>
+  </div>
+
+  <div>
+    <h2>SSE: Counter</h2>
+    <div hx-ext="sse" sse-connect="http://localhost:8080/stream">
+      <div sse-swap="counter">This is the current counter on the server</div>
+    </div>
+  </div>
+</body>
